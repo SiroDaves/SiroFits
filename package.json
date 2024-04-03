@@ -37,6 +37,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
+    "@sports-alliance/sports-lib": "^5.4.24",
     "@tanstack/react-table": "^8.19.3",
     "@tanstack/table-core": "^8.19.3",
     "@types/react-table": "^7.7.19",
