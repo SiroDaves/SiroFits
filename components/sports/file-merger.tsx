@@ -3,7 +3,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { wrap } from 'comlink';
-import { MergeWorker } from '@/utils/merge-worker';
+import { MergeWorker } from '@/utils/merge.worker';
 
 export default function FileMerger() {
   const [objectUrl, setObjectUrl] = useState<string | null>(null);

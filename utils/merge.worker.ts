@@ -1,4 +1,5 @@
 import { expose } from 'comlink';
+import { Merge } from './merger';
 
 const worker = {
   async mergeFiles(files: File[]) {
