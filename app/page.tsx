@@ -1,6 +1,6 @@
-import FileCombiner from "@/components/sports/file_combiner";
-import FileDataTable from "@/components/sports/file_data_table";
-import TimeChanger from "@/components/sports/time_changer";
+import FileCombiner from "@/components/sports/file-combiner";
+import FileDataTable from "@/components/sports/file-data-table";
+import TimeChanger from "@/components/sports/time-changer";
 
 export default function Home() {
   return (
