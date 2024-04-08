@@ -22,7 +22,7 @@ const capitalize = (str: string): string => {
   return str.replace(/^\w/, (c) => c.toUpperCase());
 };
 
-class Merge {
+export class Merge {
   constructor(private files: SupportedFile[]) {}
 
   async blob(): Promise<Blob> {
@@ -66,5 +66,3 @@ class Merge {
     return SportsLib.importFromTCX(xml as unknown as XMLDocument);
   }
 }
-
-expose(Merge);
