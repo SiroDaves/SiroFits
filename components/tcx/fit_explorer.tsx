@@ -45,17 +45,13 @@ export default function FITFileViewer() {
     setError(null);
 
     try {
-      // Read file as ArrayBuffer
       const arrayBuffer = await selectedFile.arrayBuffer();
       
-      // Parse FIT file
       const parser = new FITParser();
       const parsedEvents = await parser.parse(arrayBuffer);
       
-      // Extract first event (most FIT files have one event)
       const firstEvent = parsedEvents[0] as FitEvent;
       
-      // Convert timestamps to Date objects
       firstEvent.sessions?.forEach(session => {
         if (session.startTime) session.startTime = new Date(session.startTime);
       });
@@ -141,7 +137,6 @@ export default function FITFileViewer() {
             ))}
           </div>
 
-          {/* Records Table */}
           <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-xl font-semibold mb-4">Track Points ({events.records?.length})</h2>
             <div className="overflow-x-auto">
@@ -156,7 +151,7 @@ export default function FITFileViewer() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {events.records?.slice(0, 10).map((record, index) => ( // Show first 10 records
+                  {events.records?.slice(0, 10).map((record, index) => (
                     <tr key={index}>
                       <td className="px-4 py-2 whitespace-nowrap">
                         {record.timestamp?.toLocaleTimeString() || 'N/A'}
