@@ -1,5 +1,5 @@
-import FileDataTable from "@/components/tcx/file_data_table";
-import TcxTimeChanger from "@/components/tcx/time_changer";
+import FileDataTable from "@/components/sports/file_data_table";
+import TcxTimeChanger from "@/components/sports/time_changer";
 
 export default function Home() {
   return (
