@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { FITParser } from '@sports-alliance/sports-lib';
 
-// Define basic TypeScript interfaces for the data we'll extract
 interface FitSession {
   totalDistance?: number;
   totalTimerTime?: number;
