@@ -1,5 +1,5 @@
 import FileDataTable from "@/components/sports/file_data_table";
-import TcxTimeChanger from "@/components/sports/time_changer";
+import TimeChanger from "@/components/sports/time_changer";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-3">
           <div className="col-span-3 grid md:grid-cols-2 gap-10">
-            <TcxTimeChanger />
+            <TimeChanger />
             <FileDataTable />
           </div>
         </div>

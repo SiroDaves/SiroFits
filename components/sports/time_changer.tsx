@@ -10,10 +10,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Spinner } from '@/components/reusable/Loader';
 import { Button } from '@/components/ui/button';
 
-const TcxTimeChanger: React.FC = () => {
+const TimeChanger: React.FC = () => {
   const {
     loading,
     fileData,
@@ -86,7 +85,7 @@ const TcxTimeChanger: React.FC = () => {
         <form onSubmit={form.handleSubmit(async () => { })} className="w-full p-8">
 
           <h3 className="text-2xl text-primary p-5 rounded-md text-center flex justify-center items-center">
-            TCX
+            Time Changer
           </h3>
 
           <div className="mt-5">
@@ -144,4 +143,4 @@ const TcxTimeChanger: React.FC = () => {
   );
 };
 
-export default TcxTimeChanger;
+export default TimeChanger;
