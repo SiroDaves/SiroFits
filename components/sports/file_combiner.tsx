@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { Spinner } from '@/components/reusable/Loader';
 import { Button } from '@/components/ui/button';
 
-const TxcFileCombiner: React.FC = () => {
+const FileCombiner: React.FC = () => {
   const {
     loading,
     selectedFile,
@@ -93,4 +93,4 @@ const TxcFileCombiner: React.FC = () => {
   );
 };
 
-export default TxcFileCombiner;
+export default FileCombiner;
