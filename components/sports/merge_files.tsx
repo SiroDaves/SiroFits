@@ -2,7 +2,8 @@
 
 import { useState, useRef } from 'react';
 import { FITParser, FITBuilder } from '@sports-alliance/sports-lib';
-import type { Activity } from '@/types/fit';
+import type { Activity } from '@/state/activity';
+import { mergeTwoActivities } from '@/utils/merge-utils';
 
 export default function FitMerger() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -23,7 +24,6 @@ export default function FitMerger() {
     setActivities(prev => [...prev, ...newActivities]);
   };
 
-  // Main merge logic (move to lib/fit-utils.ts)
   const mergeActivities = () => {
     if (activities.length < 2) return;
     
