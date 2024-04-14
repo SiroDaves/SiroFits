@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from 'react';
-import { FITParser, FITBuilder } from '@sports-alliance/sports-lib';
+import { SportsLib } from '@sports-alliance/sports-lib';
 import type { Activity } from '@/state/activity';
 import { mergeTwoActivities } from '@/utils/merge-utils';
 
@@ -16,9 +16,9 @@ export default function FitMerger() {
     
     for (const file of Array.from(files)) {
       const buffer = await file.arrayBuffer();
-      const parser = new FITParser();
-      const [event] = await parser.parse(buffer);
-      newActivities.push(processActivity(event));
+      //const parser = new FITParser();
+      //const [event] = await parser.parse(buffer);
+      //newActivities.push(processActivity(event));
     }
 
     setActivities(prev => [...prev, ...newActivities]);
@@ -32,8 +32,8 @@ export default function FitMerger() {
       return mergeTwoActivities(acc, activity);
     }, activities[0]);
 
-    const builder = new FITBuilder(merged);
-    setMergedData(builder.build());
+    //const builder = new FITBuilder(merged);
+    //setMergedData(builder.build());
   };
 
   return (
@@ -45,7 +45,7 @@ export default function FitMerger() {
         onChange={e => e.target.files && handleFiles(e.target.files)}
         accept=".fit"
       />
-      
+      {/*
       <ActivityList activities={activities} />
       
       <button 
@@ -57,7 +57,7 @@ export default function FitMerger() {
       
       {mergedData && (
         <DownloadButton data={mergedData} filename="merged-activity.fit" />
-      )}
+      )}*/}
     </div>
   );
 }
