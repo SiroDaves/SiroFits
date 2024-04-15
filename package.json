@@ -44,6 +44,7 @@
     "@xmldom/xmldom": "^0.9.8",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^0.2.0",
+    "comlink": "^4.4.2",
     "date-fns": "^3.0.6",
     "lodash": "^4.17.21",
     "lucide-react": "^0.381.0",
