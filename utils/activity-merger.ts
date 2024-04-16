@@ -63,7 +63,7 @@ class Merge {
   private async fileToEventTcx(file: SupportedFile): Promise<any> {
     const text = await file.text();
     const xml = new DOMParser().parseFromString(text, 'application/xml');
-    return SportsLib.importFromTCX(xml);
+    return SportsLib.importFromTCX(xml as unknown as XMLDocument);
   }
 }
 
