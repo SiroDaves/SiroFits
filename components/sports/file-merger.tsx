@@ -10,16 +10,16 @@ export default function FileMerger() {
   const [isDragging, setIsDragging] = useState(false);
   const [fileNames, setFileNames] = useState<string[]>([]);
   const [isMerging, setIsMerging] = useState(false);
-  const [worker, setWorker] = useState<Worker | null>(null);
+  const [workerApi, setWorkerApi] = useState<MergeWorker | null>(null);
 
   // Initialize worker
   useEffect(() => {
     const worker = new Worker(new URL('@/workers/merge.worker', import.meta.url));
-    setWorker(worker);
+    const api = wrap<MergeWorker>(worker);
+    setWorkerApi(api);
     return () => worker.terminate();
   }, []);
 
-  // Cleanup object URL
   useEffect(() => {
     return () => {
       if (objectUrl) URL.revokeObjectURL(objectUrl);
@@ -27,14 +27,15 @@ export default function FileMerger() {
   }, [objectUrl]);
 
   const handleMerge = useCallback(async (files: File[]) => {
-    if (!worker || files.length < 2) return;
+    if (!workerApi || files.length < 2) return;
 
     setIsMerging(true);
     try {
-      const Merge = wrap<MergeWorker>(worker);
-      const merge = await new Merge(files);
-      const blob = await merge.blob();
-      
+      // Create new merger instance through worker
+      const merger = await new workerApi();
+      // Pass files to the merge method
+      const blob = await merger.merge(files);
+
       setFileNames(files.map(f => f.name));
       const newObjectUrl = URL.createObjectURL(blob);
       setObjectUrl(newObjectUrl);
@@ -44,7 +45,7 @@ export default function FileMerger() {
     } finally {
       setIsMerging(false);
     }
-  }, [worker]);
+  }, [workerApi]);
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files ? Array.from(e.target.files) : [];
@@ -54,7 +55,7 @@ export default function FileMerger() {
   const handleDrop = useCallback(async (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
-    
+
     const files = Array.from(e.dataTransfer.items)
       .map(item => item.kind === 'file' ? item.getAsFile() : null)
       .filter((file): file is File => !!file);
@@ -75,15 +76,14 @@ export default function FileMerger() {
 
   return (
     <div className="min-h-screen p-8 bg-gray-50">
-      <div 
-        className={`border-2 border-dashed rounded-lg p-8 text-center ${
-          isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
-        }`}
+      <div
+        className={`border-2 border-dashed rounded-lg p-8 text-center ${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-300'
+          }`}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
       >
-        <input 
+        <input
           type="file"
           multiple
           onChange={handleFileInput}
@@ -91,9 +91,9 @@ export default function FileMerger() {
           id="fileInput"
           accept=".fit,.gpx,.tcx"
         />
-        
-        <label 
-          htmlFor="fileInput" 
+
+        <label
+          htmlFor="fileInput"
           className="cursor-pointer inline-block mb-4"
         >
           <div className="space-y-4">
@@ -101,7 +101,7 @@ export default function FileMerger() {
             <p className="text-gray-600">
               {isDragging ? 'Drop files here' : 'Drag files here or click to select'}
             </p>
-            <button 
+            <button
               type="button"
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
             >
