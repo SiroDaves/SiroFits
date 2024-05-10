@@ -16,7 +16,7 @@ export default function FileMerger() {
   useEffect(() => {
     const worker = new Worker(new URL('@/workers/merge.worker', import.meta.url));
     const api = wrap<MergeWorker>(worker);
-    setWorkerApi(api);
+    //setWorkerApi(api);
     return () => worker.terminate();
   }, []);
 
