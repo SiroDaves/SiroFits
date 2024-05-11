@@ -52,6 +52,10 @@ const FileCombiner: React.FC = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full p-8">
 
+            <h3 className="text-2xl text-primary p-5 rounded-md text-center flex justify-center items-center">
+              File Combiner
+            </h3>
+
             <div className="mt-5">
               <FormField
                 control={form.control}
