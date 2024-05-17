@@ -22,6 +22,9 @@ export default function Home() {
             <div className="border-solid rounded-lg border-2 border-orange-500">
               <FileCombiner />
             </div>
+            <div className="border-solid rounded-lg border-2 border-orange-500">
+              
+            </div>
           </div>
         </div>
       </div >
