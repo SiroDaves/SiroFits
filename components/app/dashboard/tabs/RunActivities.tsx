@@ -6,12 +6,12 @@ import _ from "lodash";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { ActivitiesTable } from "./ActivitiesTable";
-export function AllActivities() {
+export function RunActivities() {
   const { activities, loading, fetchClubActivities } = useActivityStore();
-  const activityType = 'All';
+  const activityType = 'Run';
 
   useEffect(() => {
-    const fetchClubActivitiesAsync = async () => await fetchClubActivities('1224590', '');
+    const fetchClubActivitiesAsync = async () => await fetchClubActivities('1224590', activityType);
     try {
       fetchClubActivitiesAsync();
     } catch (error: any) {

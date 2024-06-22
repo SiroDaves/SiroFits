@@ -17,7 +17,7 @@ const iconMapping: Record<string, FC> = {
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
   let routes = sidebarNavigation;
-  const user = useAuthStore.getState().user;
+  const user = useAuthStore.getState().athlete;
   if (user?.role === "ADMIN") {
     routes = adminSidebarNavigation;
   }

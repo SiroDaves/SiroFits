@@ -2,7 +2,13 @@
 import { Tab } from "@/components/reusable/Tab";
 
 import {
-  AllActivities
+  AllActivities,
+  RideActivities,
+  RunActivities,
+  WalkActivities,
+  SwimActivities,
+  SkateActivities,
+  HikeActivities,
 } from "@/components/app/dashboard";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
@@ -11,12 +17,18 @@ export default function Dashboard() {
 
   const tabContents = [
     { value: "all", label: "All", Component: AllActivities },
+    { value: "ride", label: "Cycling", Component: RideActivities },
+    { value: "run", label: "Running", Component: RunActivities },
+    { value: "walk", label: "Walking", Component: WalkActivities },
+    { value: "swim", label: "Swiming", Component: SwimActivities },
+    { value: "skate", label: "Skating", Component: SkateActivities },
+    { value: "hike", label: "Hiking", Component: HikeActivities },
   ];
 
 
   return (
     <div>
-      <section className="bg-white px-5 rounded-xl py-4 px">
+      <section className="bg-white px-5 rounded-xl py-4 px visibility: hidden">
         <div className="mb-6">
           <form
             className="flex gap-3 flex-col md:flex-row space-x-2 w-1/2 mx-auto text-center mb-6 my-3 justify-center"
@@ -42,7 +54,6 @@ export default function Dashboard() {
           </form>
         </div>
       </section>
-      <br></br>
       <section className="bg-white px-5 rounded-xl py-4 px">
         <Tab tabContents={tabContents} />
       </section>

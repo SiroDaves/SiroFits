@@ -1,3 +1,5 @@
+import { Athlete } from "../athlete/types";
+
 export interface Activity {
     resource_state:                number;
     athlete:                       Athlete;
@@ -55,11 +57,6 @@ export interface Activity {
     max_heartrate?:                number;
 }
 
-export interface Athlete {
-    id:             number;
-    resource_state: number;
-}
-
 export enum GearID {
     B13820055 = "b13820055",
     G15999668 = "g15999668",
@@ -80,6 +77,8 @@ export enum Type {
     Ride = "Ride",
     Run = "Run",
     Walk = "Walk",
+    Swim = "Swim",
+    Hike = "Hike",
 }
 
 export enum Timezone {

@@ -32,30 +32,56 @@ export const FormatGender = (genderCode: string) => {
   }
 };
 
-export const FormatFrequency = (interval: number) => {
-  switch (interval) {
-    case 1:
-      return "Monthly";
-    case 3:
-      return "Quarterly";
-    case 6:
-      return "Biannualy";
-    case 12:
-      return "Annualy";
-    case 99:
-      return "Single Premium";
-    default:
-      return interval.toString();
+export function FormatTime(seconds: number): string {
+  if (seconds < 60) {
+    return `${seconds}s`;
+  } else if (seconds < 3600) {
+    const minutes = Math.floor(seconds / 60);
+    return `${minutes}m`;
+  } else {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    return `${hours}h ${minutes}m`;
+  }
+}
+
+export const FormatDistance = (meters: number): string => {
+  if (meters > 1000) {
+    const kilometers = meters / 1000;
+    return `${kilometers.toFixed(1)} km`;
+  }
+  else {
+    return `${meters.toFixed(0)} m`;
   }
 };
 
-export const FormatCurrency = (amount: number): string => {
-  return amount?.toLocaleString("en-KE", {
-    style: "currency",
-    currency: "KES",
-  });
+export const FormatElevation = (meters: number): string => {
+  if (meters == 0) {
+    return `---`;
+  }
+  else {
+    return `${meters.toFixed(0)} m`;
+  }
 };
 
+export function calculateSpeed(meters: number, seconds: number, activityType: string) {
+  // Calculate speed in meters per second
+  const speedMetersPerSecond = meters / seconds;
+
+  if (activityType === 'Ride') {
+    // Calculate speed in km per hour for Ride activity type
+    const speedKmPerHour = (speedMetersPerSecond * 3600) / 1000;
+    return speedKmPerHour.toFixed(1) + ' km/h';
+  } else {
+    // Calculate speed in minutes per km for Walk or Run activity types
+    if (speedMetersPerSecond === 0) {
+      // Avoid division by zero
+      return 0;
+    }
+    const speedMinutesPerKm = 1 / ((speedMetersPerSecond / 1000) / 60);
+    return speedMinutesPerKm.toFixed(2) + '/km';
+  }
+}
 export const GetLookupDescription = (itemCode: any, lookupList: any) => {
   for (let i = 0; i < lookupList?.length; i++) {
     if (lookupList[i]?.itemCode === itemCode) {
