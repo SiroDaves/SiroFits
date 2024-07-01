@@ -9,6 +9,7 @@ import {
   SwimActivities,
   SkateActivities,
   HikeActivities,
+  WeightActivities,
 } from "@/components/app/dashboard";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
@@ -17,12 +18,13 @@ export default function Dashboard() {
 
   const tabContents = [
     { value: "all", label: "All", Component: AllActivities },
-    { value: "ride", label: "Cycling", Component: RideActivities },
-    { value: "run", label: "Running", Component: RunActivities },
-    { value: "walk", label: "Walking", Component: WalkActivities },
-    { value: "swim", label: "Swiming", Component: SwimActivities },
-    { value: "skate", label: "Skating", Component: SkateActivities },
-    { value: "hike", label: "Hiking", Component: HikeActivities },
+    { value: "ride", label: "Rides", Component: RideActivities },
+    { value: "run", label: "Runs", Component: RunActivities },
+    { value: "walk", label: "Walks", Component: WalkActivities },
+    { value: "swim", label: "Swims", Component: SwimActivities },
+    { value: "skate", label: "Skates", Component: SkateActivities },
+    { value: "hike", label: "Hikes", Component: HikeActivities },
+    { value: "weight", label: "Weight Training", Component: WeightActivities },
   ];
 
 

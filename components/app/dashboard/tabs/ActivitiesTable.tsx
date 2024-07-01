@@ -107,10 +107,21 @@ export const ActivitiesTable: FC<ActivityTableProps> = ({
   },
   ]
 
-  if (activityType != 'All') {
-    const timeColumnIndex = columns.findIndex(column => column.header === 'Time');
-    if (timeColumnIndex !== -1) {
-      columns.splice(timeColumnIndex, 1);
+  const timeCol = columns.findIndex(column => column.header === 'Time');
+  const elevationCol = columns.findIndex(column => column.header === 'Elevation Gain');
+  const distanceCol = columns.findIndex(column => column.header === 'Distance');
+  
+  if (activityType != 'All' && activityType != 'WeightTraining') {
+    if (timeCol !== -1) {
+      columns.splice(timeCol, 1);
+    }
+  }
+  if (activityType == 'WeightTraining') {
+    if (elevationCol !== -1) {
+      columns.splice(elevationCol, 1);
+    }
+    if (distanceCol !== -1) {
+      columns.splice(distanceCol, 1);
     }
   }
   return (

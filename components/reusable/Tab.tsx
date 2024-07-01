@@ -8,12 +8,12 @@ interface TabProps {
 export const Tab: FC<TabProps> = ({ tabContents }) => {
   return (
     <Tabs defaultValue="all" className="w-full">
-      <div className="flex w-full rounded-lg bg-white px-4 py-2 justify-center items-center mb-4">
+      <div className="flex w-full rounded-lg bg-white px-4 py-2 justify-center items-center">
         <TabsList className="flex items-center justify-evenly bg-white">
           {tabContents.map((tab: any) => (
             <TabsTrigger
               key={tab.value}
-              className="data-[state=active]:bg-gray-300 px-12 py-2.5"
+              className="data-[state=active]:bg-gray-300 px-10 py-2"
               value={tab.value}
             >
               {tab.label}

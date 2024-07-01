@@ -16,7 +16,7 @@ export const getApi = () => {
 
   API.interceptors.request.use(function (config) {
     //todo
-    const accessToken = '464baa4a060e801946d283699b03d66455c3e679';//useAuthStore.getState().accessToken;
+    const accessToken = '17b637312b1720340e3f81443bdc5b1c24b8c6c0';//useAuthStore.getState().accessToken;
     config.headers.Authorization = accessToken !== null ? `Bearer ${accessToken}` : "";
     return config;
   });

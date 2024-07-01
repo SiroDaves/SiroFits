@@ -10,3 +10,4 @@ export * from "./tabs/WalkActivities";
 export * from "./tabs/SwimActivities";
 export * from "./tabs/SkateActivities";
 export * from "./tabs/HikeActivities";
+export * from "./tabs/WeightActivities";
