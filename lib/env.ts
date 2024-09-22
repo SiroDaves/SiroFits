@@ -1,15 +1,15 @@
-export const getBaseUrl = () => {
-  return process.env.NEXT_PUBLIC_BASE_URL;
+export const getAuthUrl = () => {
+  return process.env.NEXT_PUBLIC_IDENTITY_URL;
 };
 
-export const getClientId = () => {
-  return process.env.NEXT_PUBLIC_CLIENT_ID;
+export const getApplicationUrl = () => {
+  return process.env.NEXT_PUBLIC_APPLCATION_URL;
 };
 
-export const getOauthRedirect = () => {
-  return process.env.NEXT_PUBLIC_OAUTH_REDIRECT;
+export const getDashboardUrl = () => {
+  return process.env.NEXT_PUBLIC_DASHBOARD_URL;
 };
 
-export const getClientSecret = () => {
-  return process.env.NEXT_PUBLIC_CLIENT_SECRET;
+export const getCisUrl = () => {
+  return process.env.NEXT_PUBLIC_CIS_URL;
 };

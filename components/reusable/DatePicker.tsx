@@ -10,11 +10,14 @@ import {
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { useState } from "react";
+import { FC } from "react";
 
-export function DatePicker() {
-  const [date, setDate] = useState<Date>();
+interface DatePickerProps {
+  date?: Date;
+  setDate: (date: Date | undefined) => void;
+}
 
+export const DatePicker: FC<DatePickerProps> = ({ date, setDate }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -39,4 +42,4 @@ export function DatePicker() {
       </PopoverContent>
     </Popover>
   );
-}
+};

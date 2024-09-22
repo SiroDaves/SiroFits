@@ -1,7 +1,7 @@
 import { Pagination } from "@/components/reusable";
 import { DataTable } from "@/components/reusable/DataTable";
 import { PaginationProps } from "@/lib/app";
-import { useActivityStore } from "@/state/proposal/proposal";
+import { useProposalStore } from "@/state/sirofits/sirofits";
 import { ColumnDef } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
@@ -21,11 +21,11 @@ export const CustomeTable: FC<TableProps> = ({
   onPaginationChange,
   columns,
 }) => {
-  const { updateSelectedActivity } = useActivityStore();
+  const { updateSelectedProposal } = useProposalStore();
   const router = useRouter();
-  const viewActivity = (row: any) => {
-    updateSelectedActivity(row);
-    router.push(`/activities/${row?.id}`);
+  const viewProposal = (row: any) => {
+    updateSelectedProposal(row);
+    router.push(`/proposals/${row?.id}`);
   };
 
   return (

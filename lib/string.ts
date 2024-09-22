@@ -20,12 +20,14 @@ export const getInitials = (name?: string) => {
 
 export const matchSidebarPaths = (routerPath: string, optionPath: string) => {
   switch (true) {
-    case routerPath.includes("/activities"):
-      return optionPath.includes("/activities");
+    case routerPath.includes("/proposals"):
+      return optionPath.includes("/proposals");
     case routerPath.includes("/dashboard"):
       return optionPath.includes("/dashboard");
-    case routerPath.includes("/amlapps"):
-      return optionPath.includes("/amlapps");
+    case routerPath.includes("/aml-apps"):
+      return optionPath.includes("/aml-apps");
+    case routerPath.includes("/medical-underwriting"):
+      return optionPath.includes("/medical-underwriting");
     default:
       return routerPath.includes(optionPath);
   }
