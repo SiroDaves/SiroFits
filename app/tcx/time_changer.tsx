@@ -32,8 +32,8 @@ const TcxTimeChanger: React.FC = () => {
   const [fileContent, setFileContent] = useState<string | null>(null);
 
   const onFileChange = (e: any) => {
-    var file = e.target.files[0];
-    var reader = new FileReader();
+    let file = e.target.files[0];
+    let reader = new FileReader();
     if (file) {
       reader.readAsText(file);
       reader.onload = async () => {
@@ -82,64 +82,60 @@ const TcxTimeChanger: React.FC = () => {
 
   return (
     <div>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(async () => { })} className="w-full p-8">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(async () => { })} className="w-full p-8">
 
-            <div className="mt-5">
-              <FormField
-                control={form.control}
-                name="file"
-                render={({ field }) => {
-                  return (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          type="file"
-                          {...fileRef}
-                          onChange={onFileChange}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  );
-                }}
-              />
-            </div>
+          <div className="mt-5">
+            <FormField
+              control={form.control}
+              name="file"
+              render={({ field }) => {
+                return (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        type="file"
+                        {...fileRef}
+                        onChange={onFileChange}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                );
+              }}
+            />
+          </div>
 
-            <div className="grid grid-cols-1 place-content-center m-5">
-              <DatePicker
-                selected={startTime}
-                onChange={handleDateChange}
-                showTimeSelect
-                timeIntervals={5} 
-                dateFormat="Pp"
-                className="p-2 border rounded text-black w-full"
-              />
-            </div>
+          <div className="grid grid-cols-1 place-content-center m-5">
+            <DatePicker
+              selected={startTime}
+              onChange={handleDateChange}
+              showTimeSelect
+              timeIntervals={1}
+              dateFormat="Pp"
+              className="p-2 border rounded text-black w-full"
+            />
+          </div>
 
-            <div className="flex items-center justify-center m-5">
-              <Button
-                onClick={changeTime}
-                variant={"outline"}
-                className="text-black rounded-lg px-14 bg-orange-500 ml-5"
-              >
-                Change Time
-              </Button>
+          <div className="flex items-center justify-center m-5">
+            <Button
+              onClick={changeTime}
+              variant={"outline"}
+              className="text-black rounded-lg px-14 bg-orange-500 ml-5"
+            >
+              Change Time
+            </Button>
 
-              <Button
-                onClick={downloadFile}
-                variant={"outline"}
-                className="text-black rounded-lg px-14 bg-orange-500 ml-5"
-              >
-                Download
-              </Button>
-            </div>
-          </form>
-        </Form>
-      )}
+            <Button
+              onClick={downloadFile}
+              variant={"outline"}
+              className="text-black rounded-lg px-14 bg-orange-500 ml-5"
+            >
+              Download
+            </Button>
+          </div>
+        </form>
+      </Form>
     </div >
   );
 };

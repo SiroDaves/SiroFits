@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useSirofitsStore } from "@/state/sirofits/sirofits";
@@ -15,8 +15,6 @@ const TxcFileCombiner: React.FC = () => {
   const {
     loading,
     selectedFile,
-    parseGpsData,
-    alterGpsData,
   } = useSirofitsStore();
 
   const formSchema = z.object({ files: z.any() });
@@ -28,11 +26,11 @@ const TxcFileCombiner: React.FC = () => {
   const fileRef = form.register("files");
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    const files = data.files;
+    /*const files = data.files;
     // Handle file processing logic for multiple files
     for (const file of files) {
       // Process each file (e.g., parseGpsData, alterGpsData)
-    }
+    }*/
     toast.success("Files processed successfully!");
   };
 
@@ -58,7 +56,7 @@ const TxcFileCombiner: React.FC = () => {
               <FormField
                 control={form.control}
                 name="files"
-                render={({ field }) => {
+                render={() => {
                   return (
                     <FormItem>
                       <FormControl>

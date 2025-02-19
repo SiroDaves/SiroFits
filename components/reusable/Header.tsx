@@ -4,7 +4,7 @@ interface HeaderProps {
     page?: string;
 }
 
-export const Header: FC<HeaderProps> = ({ page = "main" }) => {
+export const Header: FC<HeaderProps> = () => {
     return (
         <nav className="flex items-center justify-between flex-wrap bg-orange-500 p-6">
             <div className="flex items-center flex-shrink-0 text-white mr-6">

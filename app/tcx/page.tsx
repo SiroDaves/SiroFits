@@ -24,10 +24,7 @@ const TcxPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-3">
             <div className="col-span-3 grid md:grid-cols-2 gap-10">
 
-              <div className="border-solid rounded-lg border-2 border-orange-500">
-                <TxcFileCombiner />
-              </div>
-
+              <div className="border-solid rounded-lg border-2 border-orange-500 h-40"></div>
               <div className="border-solid rounded-lg border-2 border-orange-500"></div>
             </div>
           </div>
