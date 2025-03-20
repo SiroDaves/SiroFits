@@ -1,12 +1,26 @@
+import FileDataTable from "@/components/tcx/file_data_table";
+import TcxTimeChanger from "@/components/tcx/time_changer";
+
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        
-      </footer>
-    </div>
+    <section>
+      <div className="border-solid rounded-lg border-2 border-orange-500 m-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-3">
+            <div className="col-span-3 grid md:grid-cols-2 gap-10">
+              <TcxTimeChanger />
+              <FileDataTable />
+            </div>
+          </div>
+        </div >
+        <div className="m-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-3">
+            <div className="col-span-3 grid md:grid-cols-2 gap-10">
+
+              <div className="border-solid rounded-lg border-2 border-orange-500 h-40"></div>
+              <div className="border-solid rounded-lg border-2 border-orange-500"></div>
+            </div>
+          </div>
+        </div >
+    </section>
   );
 }
